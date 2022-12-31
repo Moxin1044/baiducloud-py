@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: baiducloud
+Version: 1.0.5
+Summary: Python的百度智能云api调用
+Home-page: https://github.com/Moxin1044/baiducloud-py
+Author: Moxin
+Author-email: 1044631097@qq.com
+License: MIT License
+License-File: LICENSE
+License-File: LICENSE.txt

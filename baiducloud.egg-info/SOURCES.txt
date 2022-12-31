@@ -1,0 +1,12 @@
+LICENSE
+LICENSE.txt
+README.md
+setup.cfg
+setup.py
+baiducloud/__init__.py
+baiducloud/client.py
+baiducloud/others.py
+baiducloud.egg-info/PKG-INFO
+baiducloud.egg-info/SOURCES.txt
+baiducloud.egg-info/dependency_links.txt
+baiducloud.egg-info/top_level.txt
