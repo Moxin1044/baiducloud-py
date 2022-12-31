@@ -65,3 +65,79 @@ print(result)
 ```
 
 当然，还有更多的使用方法，具体可以参考`baiducloud > main.py`，使用方法大同小异，文档就后续再更新。
+
+# 生成环境
+
+下面是我的机器人的真实使用环境，大家可以进行一个参考：
+
+```python
+#百度云 车牌识别
+def baiduyun_orc_traffic_plate(img_path):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.orc_license_plate(img_path)
+    number = response_data['words_result']['number']
+    color = response_data['words_result']['color']
+    return "车牌号："+number+"\n颜色："+color
+
+#百度云 车牌识别——URL版
+def baiduyun_orc_traffic_plate_url(img_url):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.orc_license_plate_url(img_url)
+    number = response_data['words_result']['number']
+    color = response_data['words_result']['color']
+    return "车牌号："+number+"\n颜色："+color
+
+#百度云 手写文字识别
+def baiduyun_orc_handwriting(img_url):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.orc_handwriting_url(img_url)
+    words_result = response_data['words_result']
+    words = ""
+    for i in words_result:
+        words += i['words']+"\n"
+    return words[:-1]
+
+#百度云 通用文字识别 高精度
+def baiduyun_orc_accurate_basic(img_url):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.orc_accurate_basic_url(img_url)
+    words_result = response_data['words_result']
+    words = ""
+    for i in words_result:
+        words += i['words']+"\n"
+    return words[:-1]
+
+#百度云 通用文字识别
+def baiduyun_orc_general_basic(img_url):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.orc_general_basic_url()
+    words_result = response_data['words_result']
+    words = ""
+    for i in words_result:
+        words += i['words'] + "\n"
+    return words[:-1]
+#百度云 人脸检测
+def baiduyun_face_check(img_path):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.face_detect(img_path)
+    if response_data['error_code'] != 0:
+        return response_data['error_msg']
+    else:
+        return "检测到"+str(response_data['result']['face_num'])+"张人脸"
+#百度云 人脸对比
+def baiduyun_face_contrast(img_path,img_path1):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.face_compare(img_path,img_path1)
+    if response_data['error_code'] != 0:
+        return response_data['error_msg']
+    else:
+        return "两张人脸相似度为："+str(response_data['result']['score'])+"%"
+
+#百度云 人流量
+def baiduyun_person_num(img_path):
+    bc = baiducloud.baiducloud(sqlite.search_API("百度云应用API_Key"), sqlite.search_API("百度云应用Secret_Key"))
+    response_data = bc.person_num(img_path)
+    return "图片中人流量为："+str(response_data['person_num'])
+```
+
+当然，写的有些乱，但是应该可以看懂。
