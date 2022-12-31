@@ -40,7 +40,7 @@ class baiducloud:
         return response
 
     # 通用文字识别
-    def orc__general_basic(self, file_path):
+    def orc_general_basic(self, file_path):
         url = "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=" + self.access_token
         payload = "image=" + urllib.parse.quote(others.get_file_content_as_base64(file_path))
         response = others.send_post_data(url, payload, self.proxy)

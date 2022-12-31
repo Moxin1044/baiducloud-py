@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='baiducloud',
-    version='1.0.5',
+    version='1.0.6',
     packages=['baiducloud'],
     url='https://github.com/Moxin1044/baiducloud-py',
     license='MIT License',
